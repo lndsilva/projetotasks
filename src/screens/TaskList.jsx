@@ -7,6 +7,8 @@ import todayImage from '../../assets/imgs/today.jpg'
 import moment from 'moment'
 import 'moment/locale/pt-br'
 
+import Task from "../components/Task";
+
 export default props => {
 
     const today = moment().locale('pt-br').format('ddd, D [de] MMMM')
@@ -21,9 +23,14 @@ export default props => {
             </ImageBackground>
 
             <View style={style.taskList}>
-                <Text>Tarefa #01</Text>
-                <Text>Tarefa #02</Text>
-                <Text>Tarefa #03</Text>
+                <Task
+                    descricao='Comprar livro'
+                    dataEstimada={new Date()}
+                    concluidaEm={new Date()} />
+                <Task
+                    descricao='Ler livro'
+                    dataEstimada={new Date()}
+                    concluidaEm={null} />
             </View>
 
         </SafeAreaView>
@@ -40,7 +47,7 @@ const style = StyleSheet.create({
     taskList: {
         flex: 7,
     },
-    titleBar:{
+    titleBar: {
         flex: 1,
         justifyContent: 'flex-end'
     },
@@ -51,7 +58,7 @@ const style = StyleSheet.create({
         marginLeft: 20,
         marginBottom: 20,
     },
-    subTitle:{
+    subTitle: {
         fontFamily: commonStyles.fontFamily,
         fontSize: 20,
         color: commonStyles.colors.secundary,
